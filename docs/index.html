@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Arma tu equipo de 6 empleados con IA (guía gratis)</title>
+<meta name="description" content="Guía en español para crear tu equipo de 6 agentes de IA en Claude Code: investigador, redactor, guionista de anuncios, atención al cliente, analista y revisor, y ponerlos a trabajar juntos.">
+<meta property="og:title" content="Tu equipo de 6 empleados con IA por menos de 50 dólares al mes">
+<meta property="og:description" content="Créalos con un solo mensaje y ponlos a trabajar juntos. Gratis, en español.">
+<meta property="og:image" content="https://diegodoc1111.github.io/equipo-ia/img/og.jpg">
+<meta property="og:url" content="https://diegodoc1111.github.io/equipo-ia/">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>👥</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --fondo: #EEE8DB; --tinta: #1F1D1A; --texto: #3A3733; --suave: #6E6A63;
+    --terra: #D9774F; --terra-osc: #B85C37; --rosa: #F6DED5; --carta: #FBF8F2; --linea: #E0D8C8; --term: #1E1C1A;
+    --serif: "Instrument Serif", Georgia, "Times New Roman", serif;
+    --sans: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body { margin: 0; background: var(--fondo); color: var(--texto); font: 17px/1.6 var(--sans); }
+  main { max-width: 720px; margin: 0 auto; padding: 32px 22px 64px; }
+  .cabeza { display: flex; align-items: flex-end; gap: 18px; margin: 8px 0 18px; }
+  .cabeza img { width: 92px; height: auto; image-rendering: pixelated; flex: none; }
+  .etiqueta { display: inline-block; font: 600 13px/1 var(--mono); letter-spacing: .08em; color: var(--terra-osc); background: var(--rosa); padding: 8px 12px; border-radius: 999px; }
+  h1 { font: 400 clamp(40px, 8.5vw, 62px)/1.02 var(--serif); color: var(--tinta); margin: 14px 0 14px; letter-spacing: -.01em; }
+  h1 em, h2 em { color: var(--terra); }
+  .bajada { font-size: 19px; margin: 0 0 22px; } .bajada strong { color: var(--tinta); }
+  .foto { display: block; width: 100%; height: auto; border-radius: 16px; border: 1px solid var(--linea); box-shadow: 0 10px 30px rgba(30,20,15,.18); margin: 0 0 10px; }
+  .pie { font-size: 14px; color: var(--suave); margin: 0 0 24px; }
+  .avisos { display: grid; gap: 10px; margin: 0 0 34px; padding: 0; list-style: none; }
+  .avisos li { background: var(--carta); border: 1px solid var(--linea); border-radius: 14px; padding: 12px 16px; font-size: 15.5px; }
+  .avisos li b { color: var(--tinta); }
+  .paso { position: relative; margin: 0 0 30px; padding: 22px 20px 20px; background: var(--carta); border: 1px solid var(--linea); border-radius: 20px; }
+  .num { position: absolute; top: -16px; left: 18px; width: 36px; height: 36px; border-radius: 50%; background: var(--terra); color: #fff; font: 700 17px/36px var(--sans); text-align: center; box-shadow: 0 2px 0 var(--terra-osc); }
+  h2 { font: 400 30px/1.15 var(--serif); color: var(--tinta); margin: 8px 0 10px; }
+  h3 { font: 700 16px/1.3 var(--sans); color: var(--tinta); margin: 18px 0 6px; }
+  .paso p { margin: 0 0 12px; } .paso p:last-child { margin-bottom: 0; }
+  .paso ol, .paso ul { margin: 0 0 12px; padding-left: 22px; } .paso li { margin: 5px 0; }
+  a { color: var(--terra-osc); text-underline-offset: 3px; }
+  .boton { display: flex; align-items: center; justify-content: center; gap: 10px; margin: 14px 0 12px; padding: 16px 20px; border-radius: 999px; background: var(--terra); color: #fff; text-decoration: none; font: 700 18px/1.2 var(--sans); box-shadow: 0 3px 0 var(--terra-osc); border: 0; width: 100%; cursor: pointer; }
+  .boton:active { transform: translateY(2px); box-shadow: 0 1px 0 var(--terra-osc); }
+  .nota { font-size: 14.5px; color: var(--suave); }
+  .term { background: var(--term); border-radius: 14px; overflow: hidden; margin: 12px 0 0; box-shadow: 0 6px 20px rgba(30,20,15,.22); }
+  .term .barra { display: flex; align-items: center; gap: 7px; padding: 10px 14px; background: #2A2724; font: 12.5px var(--mono); color: #9E978C; }
+  .term .barra i { width: 11px; height: 11px; border-radius: 50%; display: inline-block; } .term .barra span { margin-left: 8px; }
+  .term pre { margin: 0; padding: 14px 16px 16px; overflow-x: auto; font: 14px/1.7 var(--mono); color: #E8E2D6; white-space: pre-wrap; word-break: break-word; }
+  .term.largo pre { max-height: 420px; overflow-y: auto; }
+  .term .p { color: var(--terra); }
+  .term .ag { color: var(--terra); font-weight: 600; }
+  .sis { display: inline-block; font: 600 12px/1 var(--mono); letter-spacing: .06em; color: var(--terra-osc); background: var(--rosa); padding: 6px 10px; border-radius: 999px; margin: 14px 0 0; }
+  .copiar { margin-top: 10px; display: inline-flex; gap: 8px; align-items: center; cursor: pointer; border: 1px solid var(--linea); background: #fff; color: var(--tinta); border-radius: 999px; padding: 8px 14px; font: 600 14px var(--sans); }
+  .acciones { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 4px; }
+  .acciones a { font: 600 14px var(--sans); }
+  .rondas { display: grid; gap: 10px; margin: 12px 0 0; }
+  .ronda { display: flex; gap: 14px; background: #fff; border: 1px solid var(--linea); border-radius: 14px; padding: 12px 14px; }
+  .ronda .n { flex: none; font-size: 26px; line-height: 1.1; width: 32px; }
+  .ronda b { color: var(--tinta); }
+  .seccion { margin: 44px 0 0; } .seccion h2 { font-size: 32px; }
+  details { background: var(--carta); border: 1px solid var(--linea); border-radius: 14px; padding: 14px 16px; margin: 10px 0; }
+  summary { cursor: pointer; font-weight: 700; color: var(--tinta); } details p { margin: 10px 0 0; }
+  code { font: 14px var(--mono); background: #fff; border: 1px solid var(--linea); border-radius: 6px; padding: 1px 6px; }
+  .loop { display: block; background: var(--rosa); border: 1px solid #EBC3B3; border-left: 6px solid var(--terra); border-radius: 14px;
+          padding: 14px 16px; margin: 0 0 30px; font-size: 16px; color: var(--tinta); text-decoration: none; }
+  .loop b { color: var(--terra-osc); } .loop span { display: block; margin-top: 6px; font-weight: 700; color: var(--terra-osc); }
+  .imperio { margin: 48px 0 0; padding: 26px 22px 24px; border-radius: 22px; background: var(--tinta); color: #E8E2D6; }
+  .imperio h2 { color: #fff; font-size: 34px; margin-top: 0; } .imperio h2 em { color: var(--terra); }
+  .imperio p { margin: 0 0 14px; } .imperio b { color: #fff; }
+  .imperio ul { list-style: none; padding: 0; margin: 0 0 18px; display: grid; gap: 8px; }
+  .imperio li { background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 12px; padding: 10px 14px; }
+  .imperio .cifra { font: 400 26px/1.25 var(--serif); color: #fff; margin: 6px 0 16px; }
+  .imperio .cifra em { color: var(--terra); }
+  .imperio .boton { margin-bottom: 8px; } .imperio .nota { color: #B9B2A6; }
+  footer { margin-top: 52px; padding-top: 22px; border-top: 1px solid var(--linea); font-size: 15px; color: var(--suave); }
+  footer a { color: var(--tinta); font-weight: 700; text-decoration: none; } footer em { font-family: var(--serif); font-size: 19px; color: var(--terra); }
+
+  .paso .foto { margin: 14px 0 6px; }
+  .num.osc { background: var(--tinta); box-shadow: 0 2px 0 #000; }
+  .mania { display: block; font: 600 12.5px/1.2 var(--mono); letter-spacing: .06em; color: var(--suave); text-transform: uppercase; margin: 6px 0 0; }
+  .paso h2 + .mania { margin-top: -4px; }
+  .ronda code { font-size: 13px; }
+  ol.simple { margin: 0 0 12px; padding-left: 22px; } ol.simple li { margin: 6px 0; }
+  .once { gap: 6px; } .once .ronda { padding: 8px 12px; gap: 10px; font-size: 15px; line-height: 1.45; }
+  .once .ronda .n { font-size: 17px; width: 22px; line-height: 1.5; color: var(--terra-osc); font-weight: 700; }
+</style>
+<style>
+  .forma { margin: 0 0 22px; padding: 18px 18px 16px; background: #fff; border: 1px solid var(--linea); border-radius: 18px; }
+  .forma h3 { margin: 0 0 6px; font: 400 26px/1.15 var(--serif); color: var(--tinta); }
+  .forma h3 b { font: 700 14px/1 var(--mono); color: #fff; background: var(--terra); border-radius: 999px; padding: 5px 10px; margin-right: 8px; vertical-align: 4px; }
+  .forma p { margin: 0 0 10px; }
+  .chip { display: inline-block; font: 600 12px/1 var(--mono); letter-spacing: .04em; color: var(--tinta); background: #fff; border: 1px solid var(--linea); border-radius: 999px; padding: 6px 10px; margin: 4px 6px 0 0; }
+  .tabla { width: 100%; border-collapse: collapse; margin: 10px 0 0; font-size: 15px; background: #fff; border-radius: 12px; overflow: hidden; }
+  .tabla td { border-top: 1px solid var(--linea); padding: 9px 12px; vertical-align: top; } .tabla tr:first-child td { border-top: 0; }
+  .tabla td:first-child { font: 600 14px var(--mono); color: var(--terra-osc); white-space: nowrap; }
+  .sk { display: grid; grid-template-columns: 150px 1fr; gap: 14px; align-items: start; margin: 12px 0; padding: 12px; background: var(--carta); border: 1px solid var(--linea); border-radius: 16px; }
+  .sk img { width: 150px; height: 84px; object-fit: cover; border-radius: 10px; border: 1px solid var(--linea); display: block; }
+  .sk h3 { margin: 0 0 4px; font: 700 17px/1.25 var(--sans); } .sk h3 b { display: inline-block; min-width: 24px; height: 24px; border-radius: 50%; background: var(--terra); color: #fff; font: 700 13px/24px var(--sans); text-align: center; margin-right: 6px; }
+  .sk p { margin: 0 0 6px; font-size: 15px; line-height: 1.45; } .sk .gh { font: 600 12.5px/1.3 var(--mono); word-break: break-all; }
+  .sk .term { margin-top: 8px; } .sk .term pre { font-size: 12.5px; padding: 10px 12px; } .sk .copiar { margin-top: 8px; padding: 6px 12px; font-size: 13px; }
+  @media (max-width: 480px) { .sk { grid-template-columns: 1fr; } .sk img { width: 100%; height: auto; aspect-ratio: 464 / 260; } }
+  .cuatro { margin: 6px 0 0; padding: 0; list-style: none; counter-reset: c; display: grid; gap: 10px; }
+  .cuatro li { counter-increment: c; position: relative; background: var(--carta); border: 1px solid var(--linea); border-radius: 14px; padding: 12px 14px 12px 54px; font-size: 15.5px; }
+  .cuatro li:before { content: counter(c); position: absolute; left: 14px; top: 12px; width: 28px; height: 28px; border-radius: 50%; background: var(--tinta); color: #fff; font: 700 14px/28px var(--sans); text-align: center; }
+  .cuatro li b { color: var(--tinta); }
+</style>
+<style id="iv2">
+  .iv2top { display: block; background: var(--rosa, #F6DED5); border: 1px solid #EBC3B3; border-left: 6px solid var(--terra, #D9774F); border-radius: 14px; padding: 14px 16px; margin: 0 0 30px; font-size: 16px; line-height: 1.45; color: var(--tinta, #1F1D1A); text-decoration: none; }
+  .iv2top .iv2h { margin: 0 0 10px; }
+  .iv2top b { color: var(--terra-osc, #B85C37); }
+  .iv2top ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 8px; }
+  .iv2top li { display: flex; align-items: center; gap: 10px; margin: 0; }
+  .iv2top li img { width: 44px; height: 44px; border-radius: 50%; object-fit: cover; flex: none; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.18); }
+  .iv2top .iv2mas { display: block; margin-top: 10px; font-weight: 700; color: var(--terra-osc, #B85C37); }
+  .imperio.iv2 h3.iv2ya { color: #fff; font: 700 18px/1.3 var(--sans, system-ui, sans-serif); margin: 22px 0 10px; }
+  .imperio.iv2 .iv2casos { display: grid; gap: 10px; margin: 0 0 18px; }
+  .imperio.iv2 .iv2caso { display: flex; gap: 12px; align-items: flex-start; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1); border-radius: 14px; padding: 10px 12px; }
+  .imperio.iv2 .iv2caso img { width: 56px; height: 56px; border-radius: 50%; object-fit: cover; flex: none; border: 2px solid rgba(255,255,255,.25); }
+  .imperio.iv2 .iv2caso p { margin: 0; font-size: 15.5px; line-height: 1.45; }
+  .imperio.iv2 .iv2caso.iv2nat { display: block; padding: 0; overflow: hidden; }
+  .imperio.iv2 .iv2caso.iv2nat img { width: 100%; max-width: 480px; height: auto; margin: 0 auto; border-radius: 0; border: 0; display: block; object-fit: contain; }
+  .imperio.iv2 .iv2caso.iv2nat p { padding: 12px 14px 14px; }
+</style>
+</head>
+<body>
+<main>
+
+  <div class="cabeza">
+    <img src="img/mascota-regalo.png" alt="">
+    <span class="etiqueta">GRATIS · EN ESPAÑOL</span>
+  </div>
+
+  <h1>Arma tu equipo de <em>6 empleados con IA</em></h1>
+  <p class="bajada">Antes, un equipo así solo lo podían pagar las grandes empresas. Hoy lo armas en tu computador con <strong>Claude Pro (unos 20 dólares al mes)</strong>: seis agentes, cada uno con su puesto, que te preparan el trabajo en minutos. Aquí está el paso a paso.</p>
+
+  <a class="iv2top" href="#imperio">
+    <p class="iv2h">&#128640; <b>Lo que vas a armar aquí es solo una pieza.</b> Los agentes Imperio completos ya trabajan solos en negocios reales:</p>
+    <ul>
+      <li><img src="img/caso-francia.jpg" alt="Francia Salazar" width="44" height="44"><span><b>Francia</b>, estética: factura unos <b>30.000 USD al mes</b>.</span></li>
+      <li><img src="img/caso-pablo.jpg" alt="Dr. Pablo Gavilanes" width="44" height="44"><span><b>Dr. Pablo Gavilanes</b>, ginecólogo: adicionó <b>+5.000 USD extras por mes</b>.</span></li>
+      <li><img src="img/caso-andres.jpg" alt="Andrés, dueño de un glamping" width="44" height="44"><span><b>Andrés</b>, glamping: <b>duplicó sus reservas en 60 días</b>.</span></li>
+    </ul>
+    <span class="iv2mas">Al final te cuento cómo funciona &darr;</span>
+  </a>
+
+  <img class="foto" src="img/equipo-6.jpg" alt="Una gran empresa paga miles de dólares; tu equipo de 6 empleados con IA cuesta menos de 50 dólares al mes" width="1080" height="760">
+  <p class="pie">Lo que antes solo tenían las grandes empresas, hoy por menos de 50 dólares al mes.</p>
+
+  <section class="seccion">
+    <h2>¿Qué es un <em>agente</em>?</h2>
+    <p>Piensa en un empleado nuevo. Le das tres cosas: <b>un puesto</b> (qué hace), <b>sus instrucciones</b> (cómo lo hace) y <b>sus herramientas</b> (qué puede usar). Un agente de IA es eso mismo, pero no se cansa y te entrega el trabajo en minutos.</p>
+    <p>Lo creas una sola vez con un mensaje y queda guardado en tu computador. Después solo le dices: "investigador, búscame…" o "guionista, escríbeme…".</p>
+  </section>
+
+  <ul class="avisos">
+    <li>💻 <b>Necesitas:</b> un computador con Windows o Mac y Claude con el plan Pro (unos 20 dólares al mes).</li>
+    <li>👥 <b>Tu equipo:</b> investigador, redactor, guionista de anuncios, atención al cliente, analista y revisor. Claude es el jefe que los coordina.</li>
+    <li>✋ <b>Tú sigues mandando:</b> ellos preparan el trabajo; publicar, pagar o responderle a un cliente lo apruebas tú.</li>
+  </ul>
+
+
+  <section class="paso">
+    <div class="num">1</div>
+    <h2>Ten tu cuenta de <em>Claude</em> con plan Pro</h2>
+    <p>Claude Code viene con el plan <b>Pro</b> (unos 20 dólares al mes). El plan gratis no lo incluye. Si ya pagas Pro o Max, salta al paso 2.</p>
+    <a class="boton" href="https://claude.com/pricing" target="_blank" rel="noopener">Ver planes de Claude →</a>
+  </section>
+
+  <section class="paso">
+    <div class="num">2</div>
+    <h2>Instala <em>Claude Code</em></h2>
+    <p>Escribe <b>terminal</b> en el buscador de tu computador y ábrela. Pega el comando de tu sistema y dale Enter. No muestra avance mientras descarga: espera a que termine.</p>
+    <span class="sis">WINDOWS</span>
+    <div class="term"><div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>Windows PowerShell</span></div><pre id="winst">irm https://claude.ai/install.ps1 | iex</pre></div><button class="copiar" type="button" data-copiar-de="winst">📋 Copiar</button>
+    <span class="sis">MAC</span>
+    <div class="term"><div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>Terminal</span></div><pre id="macinst">curl -fsSL https://claude.ai/install.sh | bash</pre></div><button class="copiar" type="button" data-copiar-de="macinst">📋 Copiar</button>
+    <p class="nota" style="margin-top:12px">Cuando termine, cierra la terminal y vuelve a abrirla. Los comandos son los de la <a href="https://code.claude.com/docs/en/setup" target="_blank" rel="noopener">página oficial de instalación</a>. ¿Prefieres sin terminal? La <a href="https://claude.ai/download" target="_blank" rel="noopener">app de Claude para el computador</a> trae Claude Code en la pestaña <b>Code</b>.</p>
+  </section>
+
+  <section class="paso">
+    <div class="num">3</div>
+    <h2>Escribe <em>claude</em> e inicia sesión</h2>
+    <p>Crea una carpeta en <b>Documentos</b> llamada <code>mi-equipo-ia</code>. Luego, en la terminal:</p>
+    <span class="sis">WINDOWS</span>
+    <div class="term"><div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>Windows PowerShell</span></div><pre id="wincd">cd ~\Documents\mi-equipo-ia
+claude</pre></div><button class="copiar" type="button" data-copiar-de="wincd">📋 Copiar</button>
+    <span class="sis">MAC</span>
+    <div class="term"><div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>Terminal</span></div><pre id="maccd">cd ~/Documents/mi-equipo-ia
+claude</pre></div><button class="copiar" type="button" data-copiar-de="maccd">📋 Copiar</button>
+    <p class="nota" style="margin-top:12px">La primera vez te abre el navegador para entrar con tu cuenta de Claude. Entras, vuelves a la terminal y ya está Claude Code esperando tu mensaje. Si te pide permiso para crear archivos o instalar algo, acéptalo: así trabaja.</p>
+  </section>
+
+  <section class="paso">
+    <div class="num">4</div>
+    <h2>Contrata a tus <em>6 empleados</em></h2>
+    <p>Un solo mensaje los crea a los seis. Primero te hace unas preguntas de tu negocio para que todos trabajen con tu información. Pégalo en Claude Code:</p>
+    <div class="term"><div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>Claude Code</span></div><pre id="equipo">Quiero armar mi equipo de agentes. Primero hazme 5 preguntas sobre mi negocio (qué vendo, a quién, precios, tono y preguntas frecuentes de mis clientes) y guarda mis respuestas en un archivo negocio.md. Después crea 6 subagentes en la carpeta .claude/agents de este proyecto, cada uno en su propio archivo, y que todos lean negocio.md antes de trabajar: 1) investigador: busca en la web competidores, precios y anuncios activos, y siempre trae links reales (que solo use WebSearch y WebFetch). 2) redactor: escribe publicaciones, carruseles y correos con un tono cercano y directo. 3) guionista: escribe guiones de anuncios en video con gancho, cuerpo y llamado a la acción. 4) atencion: redacta respuestas para clientes de WhatsApp e Instagram, sin inventar precios ni promesas. 5) analista: lee los resultados de anuncios o ventas que yo le pase y me dice qué funciona y qué no, con números. 6) revisor: califica de 1 a 10 el trabajo de los otros y dice qué corregir. Al terminar, muéstrame la lista de los 6.</pre></div><button class="copiar" type="button" data-copiar-de="equipo">📋 Copiar</button>
+    <img class="foto" src="img/tu-equipo.jpg" alt="Tu equipo de 6 agentes de IA" width="1080" height="400" style="margin-top:14px">
+    <p class="nota">Claude crea un archivo de texto por empleado en <code>.claude/agents</code>. Ahí están sus instrucciones: las puedes abrir y cambiar cuando quieras.</p>
+  </section>
+
+  <section class="paso">
+    <div class="num">5</div>
+    <h2>Ponlos a trabajar <em>juntos</em></h2>
+    <p>Tú le hablas a Claude, que es el jefe: él reparte la tarea, pone a trabajar a cada empleado y te entrega todo junto. Cambia lo que está entre corchetes:</p>
+    <div class="term"><div class="barra"><i style="background:#FF5F57"></i><i style="background:#FEBC2E"></i><i style="background:#28C840"></i><span>Claude Code</span></div><pre id="juntos">Arma mi contenido de esta semana para [mi producto o servicio]: que el investigador busque 5 competidores y sus anuncios activos; con eso, que el guionista escriba 3 guiones de anuncio y el redactor 5 publicaciones. Después, que el revisor califique todo y lo corrijan hasta que tenga 9 de 10 o más. Entrégame todo junto en un solo documento.</pre></div><button class="copiar" type="button" data-copiar-de="juntos">📋 Copiar</button>
+    <p class="nota" style="margin-top:12px">Los ves trabajando al mismo tiempo en la terminal. Cada uno gasta de tu mismo límite de uso de Claude: empieza con tareas cortas.</p>
+  </section>
+
+  <section class="seccion">
+    <h2>Qué pedirle a <em>cada uno</em></h2>
+    <p>Escribe <b>@</b> en Claude Code y elige al empleado de la lista, o dile "usa al investigador para…":</p>
+    <table class="tabla">
+      <tr><td>investigador</td><td>Busca 5 competidores de [mi negocio] en [ciudad] y tráeme sus anuncios activos con links.</td></tr>
+      <tr><td>redactor</td><td>Escribe 5 publicaciones para esta semana sobre [tema].</td></tr>
+      <tr><td>guionista</td><td>Escribe 3 guiones de anuncio de 30 segundos para [producto].</td></tr>
+      <tr><td>atencion</td><td>Respóndele a este cliente: [pega su mensaje].</td></tr>
+      <tr><td>analista</td><td>Lee resultados.csv y dime qué anuncio me trae clientes más baratos.</td></tr>
+      <tr><td>revisor</td><td>Revisa este texto y dime qué cambiar para que llegue a 9 de 10.</td></tr>
+    </table>
+    <p class="nota" style="margin-top:12px"><b>Así lo uso yo:</b> antes de armar la pauta de un cliente, le pido al investigador los anuncios activos de sus 5 competidores en la Biblioteca de anuncios de Meta. Así veo qué ganchos y ofertas repiten, y de ahí salen las ideas para sus anuncios.</p>
+  </section>
+
+  <section class="seccion">
+    <h2>Preguntas <em>frecuentes</em></h2>
+    <details>
+      <summary>¿Cuánto cuesta?</summary>
+      <p>Con Claude Pro (unos 20 dólares al mes) ya armas y usas tu equipo. Los seis gastan de tu mismo límite de uso: si los pones a trabajar todo el día, te conviene un plan más grande.</p>
+    </details>
+    <details>
+      <summary>¿Necesito saber programar?</summary>
+      <p>No. Todo se hace con mensajes en español: tú le dices a Claude qué necesitas y él crea y coordina a tu equipo.</p>
+    </details>
+    <details>
+      <summary>¿Pueden atender a mis clientes solos, las 24 horas?</summary>
+      <p>Así como quedan aquí, te preparan el trabajo y tú lo apruebas. Que trabajen solos, respondan en WhatsApp e Instagram y vendan mientras duermes es lo que hacen los agentes Imperio completos: te cuento abajo cómo funcionan.</p>
+    </details>
+  </section>
+
+<section class="imperio iv2" id="imperio">
+    <h2>Las empresas que sobrevivan serán las que usen <em>IA</em></h2>
+    <p>Los agentes Imperio hacen en <b>3 días el trabajo de todo un mes</b>. Reemplazan una nómina de 4 empleados (<b>2.000 a 4.000 USD al mes</b>) por una IA de <b>25 a 50 USD</b>.</p>
+    <p>Primero, los negocios que los usen van a multiplicar sus márgenes. Después, van a ser los únicos que queden: nadie podrá competir en precio con quien lo hace todo sin humanos lentos y caros.</p>
+    <h3 class="iv2ya">Ya está pasando:</h3>
+    <div class="iv2casos">
+      <div class="iv2caso"><img src="img/caso-francia.jpg" alt="Francia Salazar" width="56" height="56"><p><b>Francia Salazar</b>, estética: factura unos <b>30.000 USD al mes, 11.000 más que antes</b>, con los agentes trabajando solos.</p></div>
+      <div class="iv2caso"><img src="img/caso-pablo.jpg" alt="Dr. Pablo Gavilanes" width="56" height="56"><p><b>Dr. Pablo Gavilanes</b>, ginecólogo: <b>+5.000 USD extras al mes</b> en consultas, casi <b>30.000 USD extra en 6 meses</b>. Los agentes hacen el 95&nbsp;% del trabajo.</p></div>
+      <div class="iv2caso"><img src="img/caso-andres.jpg" alt="Andrés, dueño de un glamping" width="56" height="56"><p><b>Andrés</b>, glamping: sus reservas llevaban 3 años cayendo por la competencia; <b>las duplicó en 60 días</b>.</p></div>
+      <div class="iv2caso iv2nat"><img src="img/caso-natalia-v2.jpg" alt="Natalia junto a su Lamborghini Urus" width="720" height="900" loading="lazy"><p><b>Natalia</b> se convirtió en <b>la vendedora #1 de bienes raíces en Dubái</b> gracias a los agentes Imperio y a mi acompañamiento. La premiaron con un <b>Lamborghini Urus avaluado en 300.000 USD</b>.</p></div>
+    </div>
+    <p>Te hacen el contenido y los anuncios, editan tus videos, publican por ti, hacen tus páginas web y tus campañas en Meta, y hasta responden tus mensajes y hacen seguimiento de forma automática. <b>Sin saber de tecnología.</b></p>
+    <a class="boton" href="https://ig.me/m/soydiegoosorio" target="_blank" rel="noopener">Escríbeme &ldquo;IMPERIO&rdquo; por Instagram &rarr;</a>
+    <p class="nota">Te cuento cómo funciona y si encaja con tu negocio.</p>
+  </section>
+
+  <footer>
+    <p>Guía de <a href="https://instagram.com/soydiegoosorio">@soydiegoosorio</a>. Esta guía también está en <a href="https://github.com/diegodoc1111/equipo-ia">GitHub</a>.</p>
+    <p><em>Úsalo y compártelo.</em></p>
+  </footer>
+
+</main>
+<script>
+  function copiarTexto(t, boton) {
+    var listo = function () { var o = boton.textContent; boton.textContent = "✅ Copiado"; setTimeout(function () { boton.textContent = o; }, 1800); };
+    var respaldo = function () {
+      var a = document.createElement("textarea"); a.value = t; a.setAttribute("readonly", "");
+      a.style.position = "fixed"; a.style.top = "-1000px"; document.body.appendChild(a); a.select();
+      var ok = false; try { ok = document.execCommand("copy"); } catch (e) {}
+      document.body.removeChild(a);
+      if (ok) { listo(); } else { boton.textContent = "Mantén presionado el texto para copiarlo"; }
+    };
+    if (navigator.clipboard && window.isSecureContext) { navigator.clipboard.writeText(t).then(listo, respaldo); } else { respaldo(); }
+  }
+  document.querySelectorAll("[data-copiar-de]").forEach(function (b) {
+    b.addEventListener("click", function () {
+      var el = document.getElementById(b.getAttribute("data-copiar-de"));
+      var t = el.innerText.replace(/^❯\s*/, "");
+      copiarTexto(t, b);
+    });
+  });
+</script>
+
+</body>
+</html>
